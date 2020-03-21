@@ -28,22 +28,31 @@ const styles = theme => ({
         // },
     },
     radiobutton: {
-        // display:
-        // [theme.breakpoints.up('sm')]:{
+        [theme.breakpoints.down('sm')]: {
+            flexWrap: "wrap",
+            justifyContent: "place-around"
 
+        },
+        [theme.breakpoints.down('xs')]: {
+            flexWrap: "wrap",
+            justifyContent: "place-around"
 
-        // }
+        },
 
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: "5%",
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
+        [theme.breakpoints.down('sm')]: {
             width: "30%"
         },
+        [theme.breakpoints.down('xs')]: {
+            width: "40%",
+            display: "flex",
+            justifyContent: "place-around"
+
+        },
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: "30%",
     },
     dense: {
         marginTop: "16%",
@@ -52,16 +61,49 @@ const styles = theme => ({
         width: "25%",
     },
     textArea: {
+        [theme.breakpoints.down('sm')]: {
+            width: "62%",
+            justifyContent: "place-around"
+        },
+
+        [theme.breakpoints.down('xs')]: {
+            width: "40%",
+            display: "flex",
+            justifyContent: "place-around"
+
+        },
         width: "62%"
     },
     checked: {
 
     },
+
+    placeOrderButton: {
+
+        [theme.breakpoints.down('sm')]: {
+            alignItems: "flex-end",
+            justifyContent: "place-around"
+
+        },
+
+        [theme.breakpoints.down('xs')]: {
+            alignItems: "flex-end",
+            justifyContent: "place-around"
+
+        },
+
+    },
+
     button: {
-        // justifyContent: "flex-end",
-        // [theme.breakpoints.up('sm')]: {
-        //     justifyContent: "flex-end"
-        // }
+        [theme.breakpoints.down('sm')]: {
+            display: "flex",
+            justifyContent: "place-around"
+
+        },
+        [theme.breakpoints.down('xs')]: {
+            display: "flex",
+            justifyContent: "place-around"
+        },
     },
     root: {
         width: "60%",
@@ -181,7 +223,7 @@ class OutlinedTextFields extends React.Component {
                                     <p className="bookname">{this.state.bookName}</p>
                                     <p className="authorname">by {this.state.authorName}</p>
                                     <p className="p">Rs. {this.state.price}</p>
-                                    
+
                                     <img className="plusImg" src={Minus} onClick={this.decrement} />
                                     <input className="inputCount" value={this.state.count}></input>
                                     <img className="plusImg" src={Plus} onClick={this.increment} />
@@ -193,7 +235,7 @@ class OutlinedTextFields extends React.Component {
                                         size="small"
                                         value={this.state.placeOrderButton}
                                         onChange={this.handleChangePlaceOrder}
-                                        className={classes.button}>
+                                        className={classes.placeOrderButton}>
                                         PlaceOrder
                                     </Button>
                                 </div>
