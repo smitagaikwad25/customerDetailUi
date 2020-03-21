@@ -16,7 +16,6 @@ import BookImage from '../image/first.jpg';
 import Minus from '../image/minus.png';
 import Plus from '../image/plus.png';
 
-
 const styles = theme => ({
     container: {
 
@@ -128,7 +127,7 @@ class OutlinedTextFields extends React.Component {
             City: '',
             Landmark: '',
             radioValue: '',
-            expanded: null,
+            expanded: false,
             button: '',
             placeOrderButton: '',
             CheckOutButton: '',
@@ -141,7 +140,6 @@ class OutlinedTextFields extends React.Component {
         this.increment = this.increment.bind(this);
         this.decrement = this.decrement.bind(this)
     }
-
 
     increment() {
         this.setState({
@@ -194,27 +192,32 @@ class OutlinedTextFields extends React.Component {
     handleChangeContinueButton = nextPanelString => (event, expanded) => {
         this.setState({
             expanded: nextPanelString,
+
         });
+
     };
     handleChangePlaceOrder = nextPanelString => (event, expanded) => {
         this.setState({
             expanded: nextPanelString,
+
         });
     };
     handleChangeCheckOutButton = event => {
         this.setState({ CheckOutButton: event.target.value });
     };
+
     handleChange = panel => (event, expanded) => {
         this.setState({
             expanded: expanded ? panel : false,
         });
     };
     render() {
+
         const { classes } = this.props;
         const { expanded } = this.state;
         return (
             <div className={classes.root}>
-                <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
+                <ExpansionPanel expanded={true} onChange={this.handleChange('panel1')}>
                     <ExpansionPanelSummary >
                         <Typography className={classes.secondaryHeading}> My cart({this.state.count})</Typography>
                     </ExpansionPanelSummary>
