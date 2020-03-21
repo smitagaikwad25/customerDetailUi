@@ -19,13 +19,7 @@ import Plus from '../image/plus.png';
 
 const styles = theme => ({
     container: {
-        // marginRight: theme.spacing.unit * 2,
-        // marginLeft: 0,
-        // width: '30%',
-        // [theme.breakpoints.up('md')]: {
-        //     marginLeft: theme.spacing.unit * 2,
-        //     width: '50%',
-        // },
+
     },
     radiobutton: {
         [theme.breakpoints.down('sm')]: {
@@ -81,15 +75,18 @@ const styles = theme => ({
     placeOrderButton: {
 
         [theme.breakpoints.down('sm')]: {
-            alignItems: "flex-end",
-            justifyContent: "place-around"
-
+            width: "50%",
+            height: "10%",
+            justifyContent: 'left',
+            alignContent: 'flex-end',
         },
 
         [theme.breakpoints.down('xs')]: {
-            alignItems: "flex-end",
-            justifyContent: "place-around"
-
+            alignSelf: "Flex-end",
+            width: "50%",
+            height: "10%",
+            justifyContent: 'left',
+            alignContent: 'flex-end',
         },
 
     },
@@ -97,11 +94,13 @@ const styles = theme => ({
     button: {
         [theme.breakpoints.down('sm')]: {
             display: "flex",
+            justifyContent: 'flex-end',
             justifyContent: "place-around"
 
         },
         [theme.breakpoints.down('xs')]: {
             display: "flex",
+            justifyContent: 'flex-end',
             justifyContent: "place-around"
         },
     },
@@ -192,11 +191,15 @@ class OutlinedTextFields extends React.Component {
     handleChangeOfRadio = event => {
         this.setState({ radioValue: event.target.value });
     };
-    handleChangeButton = event => {
-        this.setState({ button: event.target.value });
+    handleChangeContinueButton = nextPanelString => (event, expanded) => {
+        this.setState({
+            expanded: nextPanelString,
+        });
     };
-    handleChangePlaceOrder = event => {
-        this.setState({ placeOrderButton: event.target.value });
+    handleChangePlaceOrder = nextPanelString => (event, expanded) => {
+        this.setState({
+            expanded: nextPanelString,
+        });
     };
     handleChangeCheckOutButton = event => {
         this.setState({ CheckOutButton: event.target.value });
@@ -234,7 +237,7 @@ class OutlinedTextFields extends React.Component {
                                         color="primary"
                                         size="small"
                                         value={this.state.placeOrderButton}
-                                        onChange={this.handleChangePlaceOrder}
+                                        onClick={this.handleChangePlaceOrder('panel2')}
                                         className={classes.placeOrderButton}>
                                         PlaceOrder
                                     </Button>
@@ -355,7 +358,7 @@ class OutlinedTextFields extends React.Component {
                                         color="primary"
                                         size="small"
                                         value={this.state.button}
-                                        onChange={this.handleChangeButton}
+                                        onClick={this.handleChangeContinueButton('panel3')}
                                         className={classes.button}>
                                         CONTINUE
                                     </Button>
