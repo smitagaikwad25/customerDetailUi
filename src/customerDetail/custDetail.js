@@ -105,15 +105,22 @@ const styles = theme => ({
     },
     root: {
         width: "60%",
-        marginTop: "10%",
+        marginTop: "2%",
         marginLeft: "20%",
         marginRight: "25%",
         padding: "2%",
-
     }
-
-
 });
+
+const CustomExpansionPanel = withStyles(() => ({
+    root: {
+        width: "100%"
+    },
+    expanded: {
+        // height: "250px"
+    }
+}))(ExpansionPanel);
+
 
 class OutlinedTextFields extends React.Component {
     constructor(props) {
@@ -134,7 +141,8 @@ class OutlinedTextFields extends React.Component {
             bookName: "The Name Jar",
             authorName: "yangsook chai",
             price: 1500,
-            count: 1
+            count: 1,
+            expandedPanel2: false,
 
         };
         this.increment = this.increment.bind(this);
@@ -190,17 +198,16 @@ class OutlinedTextFields extends React.Component {
         this.setState({ radioValue: event.target.value });
     };
     handleChangeContinueButton = nextPanelString => (event, expanded) => {
+
         this.setState({
             expanded: nextPanelString,
-
         });
-
     };
     handleChangePlaceOrder = nextPanelString => (event, expanded) => {
         this.setState({
-            expanded: nextPanelString,
-
+            expandedPanel2: true
         });
+
     };
     handleChangeCheckOutButton = event => {
         this.setState({ CheckOutButton: event.target.value });
@@ -217,7 +224,7 @@ class OutlinedTextFields extends React.Component {
         const { expanded } = this.state;
         return (
             <div className={classes.root}>
-                <ExpansionPanel expanded={true} onChange={this.handleChange('panel1')}>
+                <CustomExpansionPanel expanded={true}>
                     <ExpansionPanelSummary >
                         <Typography className={classes.secondaryHeading}> My cart({this.state.count})</Typography>
                     </ExpansionPanelSummary>
@@ -234,8 +241,8 @@ class OutlinedTextFields extends React.Component {
                                     <input className="inputCount" value={this.state.count}></input>
                                     <img className="plusImg" src={Plus} onClick={this.increment} />
                                 </div>
-                                <br />
-                                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: "50%", marginLeft: "25%" }}>
+                                {/* <br /> */}
+                                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: "25%", marginLeft: "25%" }}>
                                     <Button variant="contained"
                                         color="primary"
                                         size="small"
@@ -248,9 +255,9 @@ class OutlinedTextFields extends React.Component {
                             </div>
                         </div>
                     </ExpansionPanelDetails>
-                </ExpansionPanel>
+                </CustomExpansionPanel>
                 <br></br>
-                <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
+                <ExpansionPanel expanded={this.state.expandedPanel2}>
                     <ExpansionPanelSummary >
                         <Typography className={classes.secondaryHeading}>CustomerDetails</Typography>
                     </ExpansionPanelSummary>

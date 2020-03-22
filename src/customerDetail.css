@@ -1,18 +1,19 @@
 @media only screen and (min-width:600px){
     .outerBorder{
         margin: 4% 7%;
-        /* border: 2px ; */
+        border: 2px ;
         max-width: 1024px;
         width: 210%;
         padding: 5%;
         height:auto;
+        
     }
 }
 
 @media only screen and (max-width:600px){
     .outerBorder{
         margin: auto;
-        /* border: 2px ; */
+        border: 2px ;
         width: 80%;
     }
 }
@@ -26,11 +27,11 @@
     padding-left: 1px;
     display: flex;
     flex-direction: row;
-    
 }
 .image{
     width: 100px;
     height: auto;
+    /* height: 150px; */
     /* padding-left: 1px 16px; */
     padding: 10px;
 }
@@ -44,7 +45,7 @@
 }
 
 .plusImg{
-    width: 20px;
+    width: 19px;
     margin: 7px;
 }
 .cartinfo{
@@ -52,11 +53,11 @@
 }
 
 .inputCount{
-    height: 10px;
-    width: 30px;
+    height: 0px;
+    width: 10px;
     padding-top: 15px;
     text-align: center;
-    padding-bottom: 7px;
+    padding-bottom: 5px;
 }
 /* .placeorderbutton{
     width:20%;
